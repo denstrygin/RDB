@@ -1,13 +1,22 @@
-import psycopg2
-from config import host, user, password , DBName, port
+#Backend server connection
+SHost = '0.0.0.0'
+SPort = '5002'
 
+#SQL server connection
+DBHost = '192.168.1.122'
+user = 'postgres'
+password = 'Danstrigin2!'
+DBName = 'hotels'
+DBPort = 5432
+
+'''
 try:
     connection = psycopg2.connect(
-        host = host,
+        host = DBHost,
         user = user,
         password = password,
         database = DBName,
-        port = port
+        port = DBPort
     )
 
     with connection.cursor() as cursor:
@@ -24,3 +33,4 @@ finally:
     if connection:
         connection.close()
         print("[INFO] PostgreSQL connection closed")
+'''
