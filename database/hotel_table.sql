@@ -1,9 +1,8 @@
 CREATE TABLE hotel
 (
 	Id_hotel smallserial PRIMARY KEY,
+	Name varchar(60),
 	Count_of_building smallint,
-	Opening_data date,
-	Data_of_last_repair date,
 	Profit_per_month money,
 	Profit_per_year money,
 	Alltime_profit money,
