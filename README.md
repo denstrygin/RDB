@@ -15,13 +15,21 @@ Host DB
   Port 22
   IdentityFile ~/.ssh/BD_labs_ssh_key.pem
 
-#Tunnel to DB Server
+#Tunnel to Backend Server
 Host tunnel
   User ec2-user
   HostName 185.102.122.232
   Port 22
   IdentityFile ~/.ssh/BD_labs_ssh_key.pem
   LocalForward 3333 127.0.0.1:5002
+
+#Tunnel to DB Server
+Host tunnelDB
+  User ec2-user
+  HostName 185.102.122.232
+  Port 22
+  IdentityFile ~/.ssh/BD_labs_ssh_key.pem
+  LocalForward 3334 127.0.0.1:5432
 ```
 4. Для работы с файлами на сервере вписать команду и перейти на удалённую машину
 ```
@@ -37,6 +45,15 @@ ssh DB
 5. Открыть браузер и вписать адресс ``localhost:3333``
 6. После работы с браузером нужно будет закрыть сервер на удалёнке ``Ctrl + C``
 7. Закрыть фоновое соединение командой
+```
+ps aux | grep "[s]sh"
+kill -9 #здесь номер процесса, который вы запустили(у него в конце будут ключи -N -f)#
+```
+
+## Для работы с DB через pgAdmin
+1. В терминале локального пк написать команду ``ssh tunnelDB -N -f``
+2. В pgAdmin создать новый сервер, прописав в нём описание туннеля локальной машины (т.е. вы как будто с локалки работаете, с портом 3334)
+3. По окончанию закрыть фоновое соединение командой
 ```
 ps aux | grep "[s]sh"
 kill -9 #здесь номер процесса, который вы запустили(у него в конце будут ключи -N -f)#
