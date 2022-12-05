@@ -4,5 +4,6 @@ CREATE TABLE room
 	Room_number integer,
 	Floor integer,
 	Capacity integer,
-	Price money
+	Price money,
+	Id_h integer REFERENCES hotel(Id_hotel) ON DELETE SET DEFAULT
 );
